@@ -1,0 +1,23 @@
+# Untuk Upload (Commit)
+# PS E:\laragon\www\TA-20DX-Triangle> git add .
+                                                                
+# PS E:\laragon\www\TA-20DX-Triangle> git commit -m "Master: Upload master project"
+
+# PS E:\laragon\www\TA-20DX-Triangle> git push origin (Nama branch)
+
+
+
+# Untuk Clone Project (Yang harus dilakukan oleh anggota)
+# PS E:\laragon\www\TA-20DX-Triangle> git clone https://github.com/Adhityae/TA-20DX-Triangle
+
+
+# Untuk membuat branch
+# PS E:\laragon\www\TA-20DX-Triangle> git branch (Nama branch)
+
+
+# Untuk pindah branch
+# PS E:\laragon\www\TA-20DX-Triangle> git checkout (Nama branch)
+
+# Untuk pull data project
+# PS E:\laragon\www\TA-20DX-Triangle> git pull origin (Nama branch)
+# NB: Jangan lupa pull terlebih dahulu project Master
