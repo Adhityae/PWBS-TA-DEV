@@ -108,7 +108,7 @@ class SewaModel extends Model
     }
 
     // Insert Data sewa
-    function saveData($kode_sewa, $kode_pesan, $kode_user, $kode_kamar, $tanggal_masuk, $tanggal_keluar, $lama_tinggal, $pembayaran, $status)
+    function saveData($kode_sewa, $kode_pesan, $kode_user, $kode_kamar, $tanggal_keluar, $pembayaran, $status)
     {
         DB::table("tbl_sewa")
         ->join('users', 'users.kode_user', '=', 'tbl_sewa.kode_user')

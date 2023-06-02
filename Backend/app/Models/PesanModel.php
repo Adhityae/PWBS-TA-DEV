@@ -103,7 +103,7 @@ class PesanModel extends Model
             ->update([
                 "kode_pesan" => $kode_pesan,
                 "kode_kamar" => $kode_kamar,
-                "kode_kamar" => $kode_user,
+                "kode_user" => $kode_user,
                 "tanggal_masuk" => $tanggal_masuk,
                 "lama_tinggal" => $lama_tinggal
             ]);
