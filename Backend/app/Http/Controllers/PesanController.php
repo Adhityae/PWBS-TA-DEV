@@ -135,7 +135,7 @@ class PesanController extends Controller
                 $data["kode_kamar"],
                 $data["kode_user"],
                 $data["tanggal_masuk"],
-                $data["kama_tinggal"],
+                $data["lama_tinggal"],
                 $parameter
             );
             // tampilkan pesan

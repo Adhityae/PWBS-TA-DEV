@@ -110,7 +110,7 @@ class SewaController extends Controller
             "kode_user" => $req->kode_user,
             "kode_kamar" => $req->kode_kamar,
             "tanggal_keluar" => $req->tanggal_keluar,
-            "pembayaran" => $req->status,
+            "pembayaran" => $req->pembayaran,
             "status" => $req->status,
         );
         //
@@ -121,7 +121,7 @@ class SewaController extends Controller
         // Jika data tidak ditemukan
         if (count($check) == 0) {
             // lakukakan proses penyimpanan
-            $this->model->saveData($data["kode_sewa"], $data["kode_pesan"], $data["kode_user"], $data["kode_kamar"], $data["tanggal_masuk"], $data["tanggal_keluar"], $data["lama_tinggal"], $data["pembayaran"], $data["status"]);
+            $this->model->saveData($data["kode_sewa"], $data["kode_pesan"], $data["kode_user"], $data["kode_kamar"], $data["tanggal_keluar"], $data["pembayaran"], $data["status"]);
             // buat pesan dan status hasil penyimpanan data
             $status = 1;
             $pesan = "Data Berhasil Disimpan";
