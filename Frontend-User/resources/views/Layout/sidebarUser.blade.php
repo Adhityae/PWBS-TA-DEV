@@ -15,7 +15,7 @@
           <div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0">
             <div class="h-100 person">
               <img
-                src="{{ asset('/template/assets/images/person_1-min.jpg') }}"
+                src="{{ asset('/template/assets/images/dimas.jpeg') }}"
                 alt="Image"
                 class="img-fluid"
               />
@@ -47,7 +47,7 @@
           <div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0">
             <div class="h-100 person">
               <img
-                src="{{ asset('/template/assets/images/person_2-min.jpg') }}"
+                src="{{ asset('/template/assets/images/adit.jpeg') }}"
                 alt="Image"
                 class="img-fluid"
               />
@@ -79,7 +79,7 @@
           <div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0">
             <div class="h-100 person">
               <img
-                src="{{ asset('/template/assets/images/person_3-min.jpg') }}"
+                src="{{ asset('/template/assets/images/aldi.jpeg') }}"
                 alt="Image"
                 class="img-fluid"
               />
