@@ -1,47 +1,39 @@
-<!-- Header -->
-<div class="header">
-    <div class="header-left">
-        <a href="{{ route('dashboard') }}" class="logo">
-            <img src="{{ asset('/template/assets/img/Logo Kost.png') }}" width="100" height="120" alt="logo" />
-            <span class="logoclass">E-KOS</span>
-        </a>
-        <a href="{{ route('dashboard') }}" class="logo logo-small">
-            <img src="{{ asset('/template/assets/img/Logo Kost.png') }}" alt="Logo" width="30" height="30" />
-        </a>
+<!-- header -->
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close">
+          <span class="icofont-close js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
     </div>
-    <a href="javascript:void(0);" id="toggle_btn">
-        <i class="fe fe-text-align-left"></i>
-    </a>
-    <a class="mobile_btn" id="mobile_btn"> <i class="fas fa-bars"></i> </a>
-    <ul class="nav user-menu">
-        <li class="nav-item dropdown has-arrow">
-            <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                <span class="user-img"><img class="rounded-circle" src="{{ asset('/template/assets/img/profiles/avatar-10.jpg') }}" width="31"
-                        alt="Soeng Souy" /></span>
+
+    <nav class="site-nav">
+      <div class="container">
+        <div class="menu-bg-wrap">
+          <div class="site-navigation">
+            <a href="index.html" class="logo m-0 float-start">E-KOS</a>
+
+            <ul
+              class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end"
+            >
+              <li><a href="{{ route('dashboard_user') }}">Home</a></li>
+              <li>
+                <a href="{{ route('User/cek_tagihan') }}">Cek Tagihan Bulanan</a>
+              </li>
+              <li><a href="{{ route('User/hubungi_kami') }}">Hubungi Kami</a></li>
+            </ul>
+
+            <a
+              href="#"
+              class="burger light me-auto float-end mt-1 site-menu-toggle js-menu-toggle d-inline-block d-lg-none"
+              data-toggle="collapse"
+              data-target="#main-navbar"
+            >
+              <span></span>
             </a>
-            <div class="dropdown-menu">
-                <div class="user-header">
-                    <div class="avatar avatar-sm">
-                        <img src="{{ asset('/template/assets/img/profiles/avatar-10.jpg') }}" alt="User Image"
-                            class="avatar-img rounded-circle" />
-                    </div>
-                    <div class="user-text">
-                        <h6>User</h6>
-                        <p class="text-muted mb-0">User</p>
-                    </div>
-                </div>
-                <a class="dropdown-item" href="{{ route('User/profil_user') }}">Detail Profile</a>
-                <a class="dropdown-item" href="#">Logout</a>
-            </div>
-        </li>
-    </ul>
-    <div class="top-nav-search">
-        <form>
-            <input type="text" class="form-control" placeholder="Search here" />
-            <button class="btn" type="submit">
-                <i class="fas fa-search"></i>
-            </button>
-        </form>
-    </div>
-</div>
-<!-- End Header -->
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- end header -->
