@@ -67,12 +67,14 @@ class PesanModel extends Model
     function saveData($kode_pesan, $kode_kamar, $kode_user, $tanggal_masuk, $lama_tinggal)
     {
         DB::table("tbl_pesan")
+            ->join('tbl_kamar', 'tbl_kamar.kode_kamar', '=', 'tbl_pesan.kode_kamar')
+            ->join('users', 'users.kode_user', '=', 'tbl_pesan.kode_user')
             ->insert([
                 "kode_pesan" => $kode_pesan,
                 "kode_kamar" => $kode_kamar,
                 "kode_user" => $kode_user,
                 "tanggal_masuk" => $tanggal_masuk,
-                "lama_tinggal" => $lama_tinggal
+                "lama_tinggal" => $lama_tinggal,
             ]);
     }
 

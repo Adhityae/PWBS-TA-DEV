@@ -33,7 +33,7 @@ class KomplainController extends Controller
 
         // Tampilkan hasil dari "tbl_komplain" join "tbl_users" join "tbl_kamar"
         return response([
-            "Data Komplain Join" => $data
+            "DataKomplainJoin" => $data
         ], http_response_code());
     }
 
@@ -45,7 +45,7 @@ class KomplainController extends Controller
 
         // Tampilkan Hasil dari "tbl_komplain"
         return response([
-            "Detail Komplain" => $data
+            "DetailKomplain" => $data
         ], http_response_code());
     }
 
@@ -67,7 +67,7 @@ class KomplainController extends Controller
         else {
             // Tampilkan pesan data gagal dihapus
             $status = 1;
-            $pesan = "Data Gagal di Hapus ! (Kode_Komplain tidak ditemukan !)";
+            $pesan = "Data Gagal di Hapus ! (Kode Komplain tidak ditemukan !)";
         }
         // Tampilkan hasil respon
         return response([
@@ -89,7 +89,7 @@ class KomplainController extends Controller
             "status" => $req->status,
         );
         //
-        $parameter = base64_encode($data["kode_komplain"]);
+        $parameter = ($data["kode_komplain"]);
         // Cek apakah data komplain (kode_komplain) sudah pernah tersimpan/belum
         $check = $this->model->detailData($parameter);
 

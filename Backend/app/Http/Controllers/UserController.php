@@ -55,7 +55,7 @@ class UserController extends Controller
         else {
             // Tampilkan pesan data gagal dihapus
             $status = 1;
-            $pesan = "Data Gagal di Hapus ! (Kode_User tidak ditemukan !)";
+            $pesan = "Data Gagal di Hapus ! (Kode User tidak ditemukan !)";
         }
         // Tampilkan hasil respon
         return response([

@@ -153,9 +153,9 @@ class SewaModel extends Model
         $kode_sewa_lama
     ) {
         DB::table("tbl_sewa")
-        // ->join('users', 'users.kode_user', '=', 'tbl_sewa.kode_user')
-        // ->join('tbl_pesan', 'tbl_pesan.kode_pesan', '=', 'tbl_sewa.kode_pesan')
-        // ->join('tbl_kamar', 'tbl_kamar.kode_kamar', '=', 'tbl_sewa.kode_kamar')
+        ->join('users', 'users.kode_user', '=', 'tbl_sewa.kode_user')
+        ->join('tbl_pesan', 'tbl_pesan.kode_pesan', '=', 'tbl_sewa.kode_pesan')
+        ->join('tbl_kamar', 'tbl_kamar.kode_kamar', '=', 'tbl_sewa.kode_kamar')
             ->where(DB::raw("(kode_sewa)"), "=", $kode_sewa_lama)
             ->update([
                 "kode_sewa" => $kode_sewa,
