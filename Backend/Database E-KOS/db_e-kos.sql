@@ -113,16 +113,20 @@ CREATE TABLE `tbl_kamar` (
   `foto_kamar` char(20) DEFAULT NULL,
   PRIMARY KEY (`kode_kamar`),
   KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `tbl_kamar` */
 
 insert  into `tbl_kamar`(`id`,`kode_kamar`,`nama_kamar`,`lantai`,`deskripsi_kamar`,`status`,`harga`,`foto_kamar`) values 
-(5,'kmr01','Kamar A01','Lantai 1','Kamar Lengkap','Kosong','750000','kmr01.jpg'),
-(6,'kmr02','Kamar A02','Lantai 1','Kamar Lengkap','Kosong','750000','kmr02.jpg'),
-(7,'kmr03','Kamar B01','Lantai 2','Kamar Lengkap','Kosong','850000','kmr03.jpg'),
-(8,'kmr04','Kamar B02','Lantai 2','Kamar Lengkap','Kosong','850000','kmr04.jpg'),
-(9,'kmr05','Kamar C01','Lantai 3','Kamar Lengkap','Kosong','950000','kmr05.jpg');
+(5,'KMR01','Kamar A01','Lantai 1','Fasilitas Kamar Lengkap : AC,Kasur,Lemari,Meja Belajar,Dispenser Air, Dan Kamar Mandi Dalam.','Penuh','750000','kmr01.jpg'),
+(6,'KMR02','Kamar A02','Lantai 1','Fasilitas Kamar Lengkap : AC,Kasur,Lemari,Meja Belajar,Dispenser Air, Dan Kamar Mandi Dalam.','Penuh','750000','kmr02.jpg'),
+(7,'KMR03','Kamar A03','Lantai 1','Fasilitas Kamar Lengkap : AC,Kasur,Lemari,Meja Belajar,Dispenser Air, Dan Kamar Mandi Dalam.','Penuh','750000','kmr03.jpg'),
+(8,'KMR04','Kamar B01','Lantai 2','Fasilitas Kamar Lengkap : AC,Televisi,Kasur,Lemari,Meja Belajar,Dispenser Air, Dan Kamar Mandi Dalam.','Kosong','950000','kmr04.jpg'),
+(12,'KMR05','Kamar B02','Lantai 2','Fasilitas Kamar Lengkap : AC,Televisi,Kasur,Lemari,Meja Belajar,Dispenser Air, Dan Kamar Mandi Dalam.','Kosong','950000','kmr05.png'),
+(11,'KMR06','Kamar B03','Lantai 2','Fasilitas Kamar Lengkap : AC,Televisi,Kasur,Lemari,Meja Belajar,Dispenser Air, Dan Kamar Mandi Dalam.','Kosong','950000','kmr06.png'),
+(13,'KMR07','Kamar C01','Lantai 3','Fasilitas Kamar Lengkap : AC,Televisi,Kulkas,Kasur,Lemari,Meja Belajar,Dispenser Air, Dan Kamar Mandi Dalam.','Kosong','1150000','kmr07.png'),
+(14,'KMR08','Kamar C02','Lantai 3','Fasilitas Kamar Lengkap : AC,Televisi,Kulkas,Kasur,Lemari,Meja Belajar,Dispenser Air, Dan Kamar Mandi Dalam.','Kosong','1150000','kmr08.png'),
+(15,'KMR09','Kamar C03','Lantai 3','Fasilitas Kamar Lengkap : AC,Televisi,Kulkas,Kasur,Lemari,Meja Belajar,Dispenser Air, Dan Kamar Mandi Dalam.','Kosong','1150000','kmr09.png');
 
 /*Table structure for table `tbl_komplain` */
 
@@ -131,24 +135,24 @@ DROP TABLE IF EXISTS `tbl_komplain`;
 CREATE TABLE `tbl_komplain` (
   `id` int(20) NOT NULL AUTO_INCREMENT,
   `kode_komplain` char(8) NOT NULL,
-  `kode_user` int(8) NOT NULL,
+  `kode_user` int(8) DEFAULT NULL,
   `kode_kamar` char(8) DEFAULT NULL,
-  `perihal` varchar(100) DEFAULT NULL,
+  `perihal` enum('Token Listrik Habis','Air Tidak Mengalir','Genteng Bocor','Keran Air Macet','Lainnya...') DEFAULT NULL,
   `isi` char(255) DEFAULT NULL,
-  `status` enum('Belum','Prosess','Sudah') DEFAULT NULL,
+  `status` enum('Belum','Proses','Sudah') DEFAULT NULL,
   PRIMARY KEY (`kode_komplain`),
   KEY `Id_Kamar` (`kode_kamar`),
   KEY `Id_Member` (`kode_user`),
   KEY `id` (`id`),
   CONSTRAINT `tbl_komplain_ibfk_1` FOREIGN KEY (`kode_user`) REFERENCES `users` (`kode_user`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `tbl_komplain_ibfk_2` FOREIGN KEY (`kode_kamar`) REFERENCES `tbl_kamar` (`kode_kamar`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `tbl_komplain` */
 
 insert  into `tbl_komplain`(`id`,`kode_komplain`,`kode_user`,`kode_kamar`,`perihal`,`isi`,`status`) values 
-(7,'KDKMP01',10102939,'kmr01','Keran Air Rusak dan Genteng Bocor','Pak Tolong Diperbaiki Pak dikamar saya ada kerusakan','Belum'),
-(8,'KDKMP02',23432424,'kmr02','Token Listrik Habis','Pak Tolong dikar saya Token Listrik nya habis','Prosess');
+(13,'KDKMP01',18711001,'KMR01','Air Tidak Mengalir','Pak Air dikamar saya tidak menyala pak','Proses'),
+(14,'KDKMP02',18711928,'KMR02','Genteng Bocor','Pak Genteng dikamar saya bocor pak','Proses');
 
 /*Table structure for table `tbl_pesan` */
 
@@ -158,7 +162,7 @@ CREATE TABLE `tbl_pesan` (
   `id` int(20) NOT NULL AUTO_INCREMENT,
   `kode_pesan` char(8) NOT NULL,
   `kode_kamar` char(8) DEFAULT NULL,
-  `kode_user` int(8) NOT NULL,
+  `kode_user` int(8) DEFAULT NULL,
   `tanggal_masuk` date DEFAULT NULL,
   `lama_tinggal` enum('1 Bulan','2 Bulan','3 Bulan','4 Bulan','5 Bulan','6 Bulan','7 Bulan','8 Bulan','9 Bulan','10 Bulan','11 Bulan','12 Bulan') DEFAULT NULL,
   PRIMARY KEY (`kode_pesan`),
@@ -167,13 +171,14 @@ CREATE TABLE `tbl_pesan` (
   KEY `id` (`id`),
   CONSTRAINT `tbl_pesan_ibfk_1` FOREIGN KEY (`kode_user`) REFERENCES `users` (`kode_user`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `tbl_pesan_ibfk_2` FOREIGN KEY (`kode_kamar`) REFERENCES `tbl_kamar` (`kode_kamar`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `tbl_pesan` */
 
 insert  into `tbl_pesan`(`id`,`kode_pesan`,`kode_kamar`,`kode_user`,`tanggal_masuk`,`lama_tinggal`) values 
-(18,'KPSN01','kmr01',10102939,'2023-05-31','2 Bulan'),
-(19,'KPSN02','kmr02',23432424,'2023-05-31','3 Bulan');
+(25,'KDPSN01','KMR01',18711001,'2023-06-20','1 Bulan'),
+(27,'KDPSN02','KMR02',91972987,'2023-06-20','1 Bulan'),
+(28,'KPSN04','KMR03',18711928,'2023-06-20','2 Bulan');
 
 /*Table structure for table `tbl_sewa` */
 
@@ -183,7 +188,7 @@ CREATE TABLE `tbl_sewa` (
   `id` int(20) NOT NULL AUTO_INCREMENT,
   `kode_sewa` char(8) NOT NULL,
   `kode_pesan` char(8) DEFAULT NULL,
-  `kode_user` int(8) NOT NULL,
+  `kode_user` int(8) DEFAULT NULL,
   `kode_kamar` char(8) DEFAULT NULL,
   `tanggal_keluar` date DEFAULT NULL,
   `pembayaran` char(50) DEFAULT NULL,
@@ -196,13 +201,14 @@ CREATE TABLE `tbl_sewa` (
   CONSTRAINT `tbl_sewa_ibfk_1` FOREIGN KEY (`kode_user`) REFERENCES `users` (`kode_user`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `tbl_sewa_ibfk_2` FOREIGN KEY (`kode_pesan`) REFERENCES `tbl_pesan` (`kode_pesan`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `tbl_sewa_ibfk_3` FOREIGN KEY (`kode_kamar`) REFERENCES `tbl_kamar` (`kode_kamar`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `tbl_sewa` */
 
 insert  into `tbl_sewa`(`id`,`kode_sewa`,`kode_pesan`,`kode_user`,`kode_kamar`,`tanggal_keluar`,`pembayaran`,`status`) values 
-(11,'KDSW01','KPSN01',10102939,'kmr01','2023-07-31','650000','DiCicil'),
-(15,'KDSW02','KPSN02',23432424,'kmr02','2023-05-31','650000','DiCicil');
+(19,'KDSW01','KDPSN01',18711001,'KMR01','2023-06-20','750000','Sudah Bayar'),
+(20,'KDSW02','KDPSN02',91972987,'KMR02','2023-07-20','750000','Sudah Bayar'),
+(21,'KDSW04','KPSN04',18711928,'KMR03','2023-08-20','750000','DiCicil');
 
 /*Table structure for table `users` */
 
@@ -227,14 +233,15 @@ CREATE TABLE `users` (
   PRIMARY KEY (`kode_user`),
   UNIQUE KEY `user_email_unique` (`email`),
   KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `users` */
 
 insert  into `users`(`id`,`kode_user`,`nama`,`email`,`password`,`jk`,`alamat`,`no_telepon`,`status_user`,`foto_user`,`role`,`email_verified_at`,`remember_token`,`created_at`,`updated_at`) values 
-(22,10101,'Admin E-KOS','admin@gmail.com','admin123','Pria','Bandar Lampung','089521937647','Pegawai','admin.jpg','Admin',NULL,NULL,NULL,NULL),
-(25,10102939,'Doni Ananta','doni@gmail.com','doni123','Pria','Jawa Tengah','0897366277388','Pelajar/Mahasiswa','doni.png','Customer',NULL,NULL,NULL,NULL),
-(27,23432424,'dani','dani@gmail.com','dani123','Pria','Jambi','0895662771782','Karyawan','dani.jpg','Customer',NULL,NULL,NULL,NULL);
+(22,10101010,'Admin E-KOS','admin@gmail.com','admin123','Pria','Bandar Lampung','089521937647','Pegawai','admin.jpg','Admin',NULL,NULL,NULL,NULL),
+(30,18711001,'Jeki Saragih','jeki@gmail.com','jeki010201','Pria','Jln.Mangga No.123 Bandar Lampung','0897266177278','Karyawan','jeki.png','Customer',NULL,NULL,NULL,NULL),
+(32,18711928,'Dani Aditya','dani@gmail.com','dani020102','Pria','Bandar Lampung','0882772829929','Pegawai','dani.png','Customer',NULL,NULL,NULL,NULL),
+(31,91972987,'Danang','danang@gmail.com','dnang','Pria','Bandar Lampung','0897266177278','Pelajar/Mahasiswa','danang.png','Customer',NULL,NULL,NULL,NULL);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
