@@ -4,27 +4,12 @@ Nama Anggota :
 2. Adhitya Elga Nalendra-20312156 (Frontend Admin) 
 3. Aldi Anggara-20312021 (Frontend User) 
 
+======================================================================================
 
-# Untuk Upload (Commit)
-# PS D:\Project SIstem E-KOS\PWBS-TA-DEV> git add .
-                                                                
-# PS D:\Project SIstem E-KOS\PWBS-TA-DEV> git commit -m "Master: Upload master project"
+# Cara konfigurasi awal
+1. Composer Update
+2. Copy file env.cadangan lalu paste dan ubah jadi file .env
+3. import database db_e-kos
+4. Lalu Running bagian backend, frontend admin dan frontend user
 
-# PS D:\Project SIstem E-KOS\PWBS-TA-DEV> git push origin (Nama branch)
-
-
-
-# Untuk Clone Project (Yang harus dilakukan oleh anggota)
-# PS D:\Project SIstem E-KOS\PWBS-TA-DEV> git clone https://github.com/Adhityae/PWBS-TA-DEV
-
-
-# Untuk membuat branch
-# PS D:\Project SIstem E-KOS\PWBS-TA-DEV> git branch (Nama branch)
-
-
-# Untuk pindah branch
-# PS D:\Project SIstem E-KOS\PWBS-TA-DEV>  git checkout (Nama branch)
-
-# Untuk pull data project
-# PS D:\Project SIstem E-KOS\PWBS-TA-DEV> git pull origin (Nama branch)
-# NB: Jangan lupa pull terlebih dahulu project Master
+======================================================================================
