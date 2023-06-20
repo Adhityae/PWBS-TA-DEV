@@ -28,8 +28,9 @@
                 <div class="col">
                     <div class="mt-5">
                         <h4 class="card-title float-left mt-2">Tampil Data Komplain</h4>
-                        <a href="{{ route('Admin/vw_komplain/tambah_komplain') }}" class="btn btn-primary float-right veiwbutton">
-                            <i class="fas fa-plus"></i><span> Tambah </span></a>
+                        <button id="btn_refresh" class="btn btn-primary float-right veiwbutton ml-2">Refresh</button>
+                        <button id="btn_tambah" class="btn btn-primary float-right veiwbutton ml-2" onclick="gotoAdd()">
+                            <i class="fas fa-plus"></i><span> Tambah </span></button>
                     </div>
                 </div>
             </div>
@@ -92,18 +93,78 @@
     </div>
 </div>
 
+<!-- JS Datatable -->
 @push('scripts')
-    <script src="{{ asset('/template/vendor/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('/template/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('/template/vendor/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('/template/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
 
-    <!-- Page level custom scripts -->
-    <script>
-        $(document).ready(function() {
-            $('#dataTable').DataTable(); // ID From dataTable
-            $('#dataTableHover').DataTable(); // ID From dataTable with Hover
-        });
-    </script>
+<!-- Page level custom scripts -->
+<script>
+    $(document).ready(function () {
+        $('#dataTable').DataTable(); // ID From dataTable
+        $('#dataTableHover').DataTable(); // ID From dataTable with Hover
+    });
+
+</script>
 @endpush
+<!-- End JS Datatable -->
+
+<!-- Custom Function tombol (JS) -->
+<script>
+    // Buat fungsi untuk link tombol tambah komplain
+    function gotoAdd() {
+        location.href = '{{ url('/Admin/vw_komplain/tambah_komplain') }}';
+    }
+
+    // Buat function untuk btn_refresh
+    document.getElementById("btn_refresh").addEventListener('click',
+        function () {
+            location.href = '{{ url('Admin/vw_komplain/tampil_komplain') }}'
+        })
+
+    // Buat function untuk link kehalaman ubah data
+    function gotoUpdate(kode) {
+        location.href = '{{ url('/Admin/vw_komplain/edit_komplain/updateKomplain') }}/' + kode;
+    }
+
+    // function untuk btn_delete data Komplain
+    function gotoDelete(kode) {
+        if (confirm("Kode Komplain : " + kode + " Ingin Dihapus ?") === true) {
+            // panggil function "deleteData"
+            deleteData(kode)
+        }
+    }
+
+    // Buat fungsi untuk link tombol tambah Komplain
+    function gotoDetail(kode) {
+        location.href = '{{ url('/Admin/vw_komplain/detail_komplain/detailKomplain') }}/' + kode;
+    }
+
+    // function deleteKomplain
+    function deleteData(kode) {
+        const url = '{{ url('/Admin/vw_komplain/tampil_komplain/deleteKomplain') }}/' + kode;
+
+        // proses asycn (fetch)
+        fetch(url, {
+                method: "DELETE",
+                headers: {
+                    'X-CSRF-Token': document.querySelector('meta[name="_token"]').content
+                }
+            })
+
+            // ini untuk membaca response dari fetch
+            .then((respons) => respons.json())
+
+            // ini untuk menampilkan hasil dari then sebelumnya
+            .then((result) => {
+                alert(result.pesan)
+                document.querySelector("#btn_refresh").click()
+            })
+            // jika terjadi error pada saat fetch data
+            .catch((error) => alert("Data gagal dikirim"))
+    }
+
+</script>
 
 @endsection
 <!-- end content -->

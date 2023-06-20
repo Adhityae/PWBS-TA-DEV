@@ -3,7 +3,7 @@
 <!-- end master_admin -->
 
 @section('title_tamplate')
-<title>Sistem Admin E-KOS | Detail Data User</title>
+<title>Sistem Admin E-KOS | Edit Data User</title>
 @endsection
 
 <!-- header -->
@@ -26,7 +26,7 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col">
-                    <h3 class="page-title mt-5">Ubah Data User</h3>
+                    <h3 class="page-title mt-5">Edit Data User</h3>
                 </div>
             </div>
         </div>
@@ -230,8 +230,6 @@
         document.querySelector("#txt_status").value = "{{$status_user}}"
         document.querySelector("#txt_fotouser").value = "{{$foto_user}}"
         document.querySelector("#txt_role").value = "{{$role}}"
-
-
 
 
     // fungsi "btn_simpan"
@@ -469,7 +467,7 @@
             // proses kirim data
             try {
                 // await fetch (url dan atribut)
-                let response = await fetch("{{ url('/Admin/vw_user/edit_user/editData') }}/"+kode_user_baru, {
+                let response = await fetch("{{ url('/Admin/vw_user/edit_user/editUser') }}/"+kode_user_lama, {
                     method: "PUT",
                     headers: {
                         'Content-type': 'application/json',

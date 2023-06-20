@@ -28,8 +28,9 @@
                 <div class="col">
                     <div class="mt-5">
                         <h4 class="card-title float-left mt-2">Tampil Data Riwayat Booking</h4>
-                        <a href="{{ route('Admin/vw_sewa/tambah_sewa') }}" class="btn btn-primary float-right veiwbutton">
-                            <i class="fas fa-plus"></i><span> Tambah </span></a>
+                        <button id="btn_refresh" class="btn btn-primary float-right veiwbutton ml-2">Refresh</button>
+                        <button id="btn_tambah" class="btn btn-primary float-right veiwbutton ml-2" onclick="gotoAdd()">
+                            <i class="fas fa-plus"></i><span> Tambah </span></button>
                     </div>
                 </div>
             </div>
@@ -106,6 +107,64 @@
         });
     </script>
 @endpush
+<!-- End JS Datatable -->
+
+<!-- Custom Function tombol (JS) -->
+<script>
+    // Buat fungsi untuk link tombol tambah sewa
+    function gotoAdd() {
+        location.href = '{{ url('/Admin/vw_sewa/tambah_sewa') }}';
+    }
+
+    // Buat function untuk btn_refresh
+    document.getElementById("btn_refresh").addEventListener('click',
+        function () {
+            location.href = '{{ url('Admin/vw_sewa/tampil_sewa') }}'
+        })
+
+    // Buat function untuk link kehalaman ubah data
+    function gotoUpdate(kode) {
+        location.href = '{{ url('/Admin/vw_sewa/edit_sewa/updateSewa') }}/' + kode;
+    }
+
+    // function untuk btn_delete data sewa
+    function gotoDelete(kode) {
+        if (confirm("Kode Sewa : " + kode + " Ingin Dihapus ?") === true) {
+            // panggil function "deleteData"
+            deleteData(kode)
+        }
+    }
+
+    // Buat fungsi untuk link tombol tambah Sewa
+    function gotoDetail(kode) {
+        location.href = '{{ url('/Admin/vw_sewa/detail_sewa/detailSewa') }}/' + kode;
+    }
+
+    // function deleteSewa
+    function deleteData(kode) {
+        const url = '{{ url('/Admin/vw_sewa/tampil_sewa/deleteSewa') }}/' + kode;
+
+        // proses asycn (fetch)
+        fetch(url, {
+                method: "DELETE",
+                headers: {
+                    'X-CSRF-Token': document.querySelector('meta[name="_token"]').content
+                }
+            })
+
+            // ini untuk membaca response dari fetch
+            .then((respons) => respons.json())
+
+            // ini untuk menampilkan hasil dari then sebelumnya
+            .then((result) => {
+                alert(result.pesan)
+                document.querySelector("#btn_refresh").click()
+            })
+            // jika terjadi error pada saat fetch data
+            .catch((error) => alert("Data gagal dikirim"))
+    }
+
+</script>
 
 @endsection
 <!-- end content -->

@@ -28,8 +28,9 @@
                 <div class="col">
                     <div class="mt-5">
                         <h4 class="card-title float-left mt-2">Tampil Data Kamar</h4>
-                        <a href="{{ route('Admin/vw_kamar/tambah_kamar') }}" class="btn btn-primary float-right veiwbutton">
-                            <i class="fas fa-plus"></i><span> Tambah </span></a>
+                        <button id="btn_refresh" class="btn btn-primary float-right veiwbutton ml-2">Refresh</button>
+                        <button id="btn_tambah" class="btn btn-primary float-right veiwbutton ml-2" onclick="gotoAdd()">
+                            <i class="fas fa-plus"></i><span> Tambah </span></button>
                     </div>
                 </div>
             </div>
@@ -53,7 +54,6 @@
                                         <th class="text-center">Kode Kamar</th>
                                         <th class="text-center">Nama kamar</th>
                                         <th class="text-center">Lantai</th>
-                                        <th class="text-center">Deskripsi</th>
                                         <th class="text-center">Status</th>
                                         <th class="text-center">Harga</th>
                                         <th class="text-center">Foto</th>
@@ -68,7 +68,6 @@
                                         <td class="text-center">{{ $output->kode_kamar }}</td>
                                         <td class="text-center">{{ $output->nama_kamar }}</td>
                                         <td class="text-center">{{ $output->lantai }}</td>
-                                        <td class="text-center">{{ $output->deskripsi_kamar }}</td>
                                         <td class="text-center">{{ $output->status }}</td>
                                         <td class="text-center">{{ $output->harga }}</td>
                                         <td class="text-center">{{ $output->foto_kamar }}</td>
@@ -95,18 +94,79 @@
     </div>
 </div>
 
+<!-- JS Datatable -->
 @push('scripts')
-    <script src="{{ asset('/template/vendor/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('/template/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('/template/vendor/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('/template/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
 
-    <!-- Page level custom scripts -->
-    <script>
-        $(document).ready(function() {
-            $('#dataTable').DataTable(); // ID From dataTable
-            $('#dataTableHover').DataTable(); // ID From dataTable with Hover
-        });
-    </script>
+<!-- Page level custom scripts -->
+<script>
+    $(document).ready(function () {
+        $('#dataTable').DataTable(); // ID From dataTable
+        $('#dataTableHover').DataTable(); // ID From dataTable with Hover
+    });
+
+</script>
 @endpush
+<!-- End JS Datatable -->
+
+<!-- Custom Function tombol (JS) -->
+<script>
+    // Buat fungsi untuk link tombol tambah Kamar
+    function gotoAdd() {
+        location.href = '{{ url('/Admin/vw_kamar/tambah_kamar') }}';
+    }
+
+    // Buat function untuk btn_refresh
+    document.getElementById("btn_refresh").addEventListener('click',
+        function () {
+            location.href = '{{ url('Admin/vw_kamar/tampil_kamar') }}'
+        })
+
+    // Buat function untuk link kehalaman ubah data
+    function gotoUpdate(kode) {
+        location.href = '{{ url('/Admin/vw_kamar/edit_kamar/updateKamar') }}/' + kode;
+    }
+
+    // function untuk btn_delete data Kamar
+    function gotoDelete(kode) {
+        if (confirm("Kode Kamar : " + kode + " Ingin Dihapus ?") === true) {
+            // panggil function "deleteData"
+            deleteData(kode)
+        }
+    }
+
+    // Buat fungsi untuk link tombol tambah Kamar
+    function gotoDetail(kode) {
+        location.href = '{{ url('/Admin/vw_kamar/detail_kamar/detailKamar') }}/' + kode;
+    }
+
+    // function deleteKamar
+    function deleteData(kode) {
+        const url = '{{ url('/Admin/vw_kamar/tampil_kamar/deleteKamar') }}/' + kode;
+
+        // proses asycn (fetch)
+        fetch(url, {
+                method: "DELETE",
+                headers: {
+                    'X-CSRF-Token': document.querySelector('meta[name="_token"]').content
+                }
+            })
+
+            // ini untuk membaca response dari fetch
+            .then((respons) => respons.json())
+
+            // ini untuk menampilkan hasil dari then sebelumnya
+            .then((result) => {
+                alert(result.pesan)
+                document.querySelector("#btn_refresh").click()
+            })
+            // jika terjadi error pada saat fetch data
+            .catch((error) => alert("Data gagal dikirim"))
+    }
+
+</script>
 
 @endsection
 <!-- end content -->
+
