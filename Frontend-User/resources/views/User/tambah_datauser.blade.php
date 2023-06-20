@@ -1,24 +1,84 @@
-<!-- master_admin -->
-@extends('Layout.master_admin')
-<!-- end master_admin -->
+<!-- master_user -->
+@extends('Layout.master_user')
+<!-- end master_user -->
 
 @section('title_tamplate')
-<title>Sistem Customer E-KOS | Detail Data User</title>
+<title>E-KOS | Tambah Data User</title>
 @endsection
 
-<!-- header -->
-@section('headerAdmin')
-@include('Layout.headerAdmin')
-@endsection
-<!-- end header -->
+<!-- content -->
+@section('content')
 
-<!-- sidebar -->
-@section('sidebarAdmin')
-@include('Layout.sidebarAdmin')
-@endsection
-<!-- end sidebar -->
+    <!-- header -->
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close">
+          <span class="icofont-close js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
 
-<!-- Content -->
+    <nav class="site-nav">
+      <div class="container">
+        <div class="menu-bg-wrap">
+          <div class="site-navigation">
+            <a href="index.html" class="logo m-0 float-start">E-KOS</a>
+
+            <ul
+              class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end"
+            >
+              <li><a href="{{ route('dashboard_user') }}">Home</a></li>
+              <li>
+                <a href="{{ route('User/cek_tagihan') }}">Cek Tagihan Bulanan</a>
+              </li>
+              <li><a href="{{ route('User/hubungi_kami') }}">Hubungi Kami</a></li>
+            </ul>
+
+            <a
+              href="#"
+              class="burger light me-auto float-end mt-1 site-menu-toggle js-menu-toggle d-inline-block d-lg-none"
+              data-toggle="collapse"
+              data-target="#main-navbar"
+            >
+              <span></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- end header -->
+
+    <div
+      class="hero page-inner overlay"
+      style="background-image: url('images/hero_bg_1.jpg')"
+    >
+      <div class="container">
+        <div class="row justify-content-center align-items-center">
+          <div class="col-lg-9 text-center mt-5">
+            <h1 class="heading" data-aos="fade-up">Lengkapi Data User</h1>
+
+            <nav
+              aria-label="breadcrumb"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <ol class="breadcrumb text-center justify-content-center">
+                <li class="breadcrumb-item"><a href="{{ route('dashboard_user') }}">Home</a></li>
+                <li
+                  class="breadcrumb-item active text-white-50"
+                  aria-current="page"
+                >
+                  Lengkapi Data User
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+   <!-- Content -->
+   <!-- Content -->
 @section('content')
 
 <div class="page-wrapper">
@@ -26,7 +86,7 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col">
-                    <h3 class="page-title mt-5">Ubah Data User</h3>
+                    <h3 class="page-title mt-5 text-center">Tambah Data User</h3>
                 </div>
             </div>
         </div>
@@ -37,11 +97,10 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="txt_kodeuser" id="lbl_kodeuser">Kode User</label>
-                                <input class="form-control" type="text" name="txt_kodeuser" id="txt_kodeuser"
-                                    maxlength="8" placeholder=""/>
+                                <input class="form-control" type="text" name="txt_kodeuser" id="txt_kodeuser" maxlength="8"
+                                    placeholder="Kode User (Harus Angka - Tidak Boleh Karakter)" />
                                 <label id="err_kodeuser" class="text-danger">
-                                    <i class="fa fa-exclamation-circle mr-2.5" aria-hidden="true"></i>Kode User Harus
-                                    Diisi
+                                    <i class="fa fa-exclamation-circle mr-2.5" aria-hidden="true"></i>Kode User Harus Diisi
                                     !</label>
                             </div>
                         </div>
@@ -49,7 +108,7 @@
                             <div class="form-group">
                                 <label for="txt_nama" id="lbl_nama">Nama</label>
                                 <input class="form-control" type="text" name="txt_nama" id="txt_nama" maxlength="50"
-                                 placeholder="" />
+                                    placeholder="Masukkan Nama" />
                                 <label id="err_nama" class="text-danger">
                                     <i class="fa fa-exclamation-circle mr-2.5" aria-hidden="true"></i>Nama Harus Diisi
                                     !</label>
@@ -59,7 +118,7 @@
                             <div class="form-group">
                                 <label for="txt_email" id="lbl_email">Email</label>
                                 <input class="form-control" type="text" name="txt_email" id="txt_email" maxlength="50"
-                                 placeholder="" />
+                                    placeholder="Masukkan Email" />
                                 <label id="err_email" class="text-danger">
                                     <i class="fa fa-exclamation-circle mr-2.5" aria-hidden="true"></i>Email Harus Diisi
                                     !</label>
@@ -68,8 +127,8 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="txt_password" id="lbl_password">Password</label>
-                                <input class="form-control" type="password" name="txt_password" id="txt_password"
-                                    maxlength="50" />
+                                <input class="form-control" type="password" name="txt_password" id="txt_password" maxlength="50"
+                                    placeholder="Masukkan Password" />
                                 <label id="err_password" class="text-danger">
                                     <i class="fa fa-exclamation-circle mr-2.5" aria-hidden="true"></i>Password Harus
                                     Diisi
@@ -80,8 +139,7 @@
                             <div class="form-group">
                                 <label for="txt_jk" id="lbl_jk">JK</label>
                                 <select class="form-control" id="txt_jk" name="txt_jk">
-                                    <option id="txt_jk" name="txt_jk">Pilih Jenis Kelamin
-                                    </option>
+                                    <option>Pilih Jenis Kelamin</option>
                                     <option id="txt_jk" name="txt_jk">Pria</option>
                                     <option id="txt_jk" name="txt_jk">Wanita</option>
                                 </select>
@@ -93,27 +151,13 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="txt_alamat" id="lbl_alamat">Alamat</label>
-                                <input class="form-control" type="text" name="txt_alamat" id="txt_alamat"
-                                    placeholder="" />
-                                <label id="err_alamat" class="text-danger">
-                                    <i class="fa fa-exclamation-circle mr-2.5" aria-hidden="true"></i>Alamat Harus Diisi
-                                    !</label>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
                                 <label for="txt_status" id="lbl_status">Pilih Status</label>
                                 <select class="form-control" id="txt_status" name="txt_status">
-                                    <option name="txt_status" id="txt_status">Pilih Status</option>
-                                    <option name="txt_status" id="txt_status">
-                                        Pelajar/Mahasiswa</option>
-                                    <option name="txt_status" id="txt_status">
-                                        Karyawan</option>
-                                    <option name="txt_status" id="txt_status">Pegawai
-                                    </option>
-                                    <option name="txt_status" id="txt_status">
-                                        Lainnya...</option>
+                                    <option>Select</option>
+                                    <option name="txt_status" id="txt_status">Pelajar/Mahasiswa</option>
+                                    <option name="txt_status" id="txt_status">Karyawan</option>
+                                    <option name="txt_status" id="txt_status">Pegawai</option>
+                                    <option name="txt_status" id="txt_status">Lainnya...</option>
                                 </select>
                                 <label id="err_status" class="text-danger">
                                     <i class="fa fa-exclamation-circle mr-2.5" aria-hidden="true"></i>Status Harus Diisi
@@ -123,9 +167,9 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="txt_telepon" id="lbl_telepon">Telepon</label>
-                                <input class="form-control" type="text" name="txt_telepon" id="txt_telepon"
-                                    maxlength="13" placeholder="" />
-                                    <label id="err_telepon" class="text-danger">
+                                <input class="form-control" type="text" name="txt_telepon" id="txt_telepon" maxlength="13"
+                                    placeholder="Masukkan Telepon" />
+                                <label id="err_telepon" class="text-danger">
                                     <i class="fa fa-exclamation-circle mr-2.5" aria-hidden="true"></i>Telepon Harus
                                     Diisi
                                     !</label>
@@ -133,10 +177,20 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
+                                <label for="txt_alamat" id="lbl_alamat">Alamat</label>
+                                <textarea class="form-control" rows="5" name="txt_alamat" id="txt_alamat"
+                                    placeholder="Masukkan Alamat"></textarea>
+                                <label id="err_alamat" class="text-danger">
+                                    <i class="fa fa-exclamation-circle mr-2.5" aria-hidden="true"></i>Alamat Harus Diisi
+                                    !</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
                                 <label for="txt_fotouser" id="lbl_fotouser">Foto User</label>
                                 <input class="form-control" type="text" name="txt_fotouser" id="txt_fotouser"
-                                 placeholder="" />
-                                     <label id="err_fotouser" class="text-danger">
+                                    placeholder="Masukkan fotouser" />
+                                <label id="err_fotouser" class="text-danger">
                                     <i class="fa fa-exclamation-circle mr-2.5" aria-hidden="true"></i>Foto USer Harus Diisi
                                     !</label>
                             </div>
@@ -145,9 +199,8 @@
                             <div class="form-group">
                                 <label for="txt_role" id="lbl_role">Role</label>
                                 <select class="form-control" id="txt_role" name="txt_role">
-                                    <option id="txt_role" name="txt_role">
-                                        Pilih Role</option>
-                                    <option id="txt_role" name="txt_role">Admin</option>
+                                    <option>Pilih Role</option>
+                                    <option id="txt_role" name="txt_role"></option>
                                     <option id="txt_role" name="txt_role">Customer</option>
                                 </select>
                                 <label id="err_role" class="text-danger">
@@ -159,42 +212,22 @@
                 </form>
             </div>
         </div>
-        <button id="btn_ubah" class="btn btn-primary buttonedit ml-2" onclick="edit()">
-            Ubah
+        <button id="btn_simpan" class="btn btn-primary buttonedit ml-2" onclick="save()">
+            Simpan
         </button>
         <button id="btn_batal" class="btn btn-primary buttonedit ml-2">
             Batal
         </button>
-        <button id="btn_kembali" class="btn btn-primary buttonedit">
-            Kembali
+         <button id="btn_lanjut" class="btn btn-primary buttonedit">
+            Selanjutnya
         </button>
     </div>
 </div>
 
 
 <!-- Custom function JS -->
-<!-- jquery -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous">
-</script>
-<!-- End Jquery -->
 
 <script>
-    // Buat function untuk btn_kembali
-    document.getElementById("btn_kembali").addEventListener('click',
-        function () {
-            location.href = '{{ url('/Admin/vw_user/tampil_user') }}'
-        })
-
-    // Fungsi "btn_batal"
-        document.querySelector("#btn_batal").addEventListener('click',
-            function() {
-                location.href = "{{ url('/Admin/vw_user/edit_user/updateUser') }}/" + kode_user_lama;
-            })
-
     // Hilangkan pesan error kodeuser
     document.querySelector("#err_kodeuser").style.display = 'none'
     // Hilangkan pesan error nama
@@ -217,25 +250,20 @@
     document.querySelector("#err_role").style.display = 'none'
 
 
-     // Tampilkan data
-        let kode_user_lama = "{{$kode_user_lama}}"
+    // Buat function untuk btn_batal
+    document.getElementById("btn_batal").addEventListener('click',
+        function () {
+            location.href = '{{ url('User/tambah_datauser') }}'
+        })
 
-        document.querySelector("#txt_kodeuser").value = "{{$kode_user}}"
-        document.querySelector("#txt_nama").value = "{{$nama}}"
-        document.querySelector("#txt_email").value = "{{$email}}"
-        document.querySelector("#txt_password").value = "{{$password}}"
-        document.querySelector("#txt_jk").value = "{{$jk}}"
-        document.querySelector("#txt_alamat").value = "{{$alamat}}"
-        document.querySelector("#txt_telepon").value = "{{$no_telepon}}"
-        document.querySelector("#txt_status").value = "{{$status_user}}"
-        document.querySelector("#txt_fotouser").value = "{{$foto_user}}"
-        document.querySelector("#txt_role").value = "{{$role}}"
-
-
-
+    // Buat function untuk btn_kembali
+    document.getElementById("btn_lanjut").addEventListener('click',
+        function () {
+            location.href = '{{ url('/User/tambah_datapesan') }}'
+        })
 
     // fungsi "btn_simpan"
-    const edit = () => {
+    const save = () => {
 
             // Ternary Computer
              const kode_user = document.querySelector("#txt_kodeuser").value === "" ?
@@ -441,8 +469,8 @@
         // jika seluruh komponen sudah diisi
         const check = (kode_user[2] === 0 && nama[2] === 0 && email[2] === 0 && password[2] === 0 && jk[2] === 0 && alamat[2] === 0 &&
                 no_telepon[2] === 0 && status_user[2] === 0 && foto_user[2] === 0 && role[2] === 0) ?
-            // proses simpan data (panggil fungsi editData)
-            editData(document.querySelector("#txt_kodeuser").value,document.querySelector("#txt_nama").value, document.querySelector("#txt_email").value,
+            // proses simpan data (panggil fungsi saveData)
+            saveData(document.querySelector("#txt_kodeuser").value,document.querySelector("#txt_nama").value, document.querySelector("#txt_email").value,
                 document.querySelector("#txt_password").value, document.querySelector("#txt_jk").value,
                 document.querySelector("#txt_alamat").value, document.querySelector("#txt_telepon").value,
                 document.querySelector("#txt_status").value, document.querySelector("#txt_fotouser").value,
@@ -451,8 +479,8 @@
             ""
     }
 
-        // buat fungsi edit data (Metode async/await)
-        const editData = async (kode_user, nama, email, password, jk, alamat, no_telepon, status_user, foto_user, role) => {
+        // buat fungsi save data (Metode async/await)
+        const saveData = async (kode_user, nama, email, password, jk, alamat, no_telepon, status_user, foto_user, role) => {
             // Collecting data
             let data = {
                 "kode_user": kode_user,
@@ -469,8 +497,8 @@
             // proses kirim data
             try {
                 // await fetch (url dan atribut)
-                let response = await fetch("{{ url('/Admin/vw_user/edit_user/editData') }}/"+kode_user_baru, {
-                    method: "PUT",
+                let response = await fetch("{{ url('/User/tambah_datauser/insertUser') }}", {
+                    method: "POST",
                     headers: {
                         'Content-type': 'application/json',
                         'X-CSRF-Token': document.querySelector('meta[name="_token"]').content
@@ -480,7 +508,7 @@
                 // baca hasil dari controller
                 let result = await response.json()
                 alert(result.pesan)
-                document.querySelector("#btn_kembali").click()
+                document.querySelector("#btn_batal").click()
             } catch (error) {
                 alert("Data gagal di kirim !")
             }
@@ -489,6 +517,13 @@
 </script>
 <!-- End Function JS -->
 
+   <!-- End Content -->
+
+<!-- footer -->
+@section('footerUser')
+@include('Layout.footerUser')
+@endsection
+<!-- end footer -->
 
 @endsection
-<!-- End Content -->
+<!-- end content -->

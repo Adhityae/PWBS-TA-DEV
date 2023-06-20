@@ -3,9 +3,8 @@
 <!-- end master_user -->
 
 @section('title_tamplate')
-<title>E-KOS | Dashboard</title>
+<title>E-KOS | Tampil Data Kamar Kost</title>
 @endsection
-
 
 <!-- content -->
 @section('content')
@@ -49,13 +48,13 @@
     <div class="container">
         <div class="row justify-content-center align-items-center">
             <div class="col-lg-9 text-center mt-5">
-                <h1 class="heading" data-aos="fade-up">Booking Kamar Kost Online Dengan Mudah</h1>
+                <h1 class="heading" data-aos="fade-up">Data Kamar Kost</h1>
 
                 <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="200">
                     <ol class="breadcrumb text-center justify-content-center">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard_user') }}">Home</a></li>
                         <li class="breadcrumb-item active text-white-50" aria-current="page">
-                            Cari Kamar Kost
+                            Data Kamar Kost
                         </li>
                     </ol>
                 </nav>
@@ -72,17 +71,7 @@
 <div class="section">
     <div class="container">
         <div class="row mb-5 align-items-center">
-            <div class="col-lg-6">
-                <h2 class="font-weight-bold text-primary heading">Kamar Kost</h2>
-            </div>
-            <div class="col-lg-6 text-lg-end">
-                <p>
-                    <a href="{{ route('User/tampil_datakamar') }}" target="_blank"
-                        class="btn btn-primary text-white py-3 px-4">Lihat Semua Kamar</a>
-                </p>
-            </div>
-        </div>
-        <div class="row">
+            <div class="row">
             <div class="col-12">
                 <div class="property-slider-wrap">
                     <div class="property-slider">
@@ -96,7 +85,7 @@
                             <div class="property-content">
                                 <div class="price mb-2"><span>{{ $output->nama_kamar }}</span></div>
                                 <div>
-                                    <span class="d-block mb-2 text-black-50">Rp. {{ $output->harga }} / Perbulan.</span>
+                                    <span class="d-block mb-2 text-black-50">Rp. {{ $output->harga }}</span>
                                     <span class="city d-block mb-3">{{$output->deskripsi_kamar }}</span>
 
                                     <div class="specs d-flex mb-4">
@@ -136,12 +125,6 @@
         location.href = '{{ url('/User/detail_kamar/detailKamar') }}/' + kode;
     }
 </script>
-
-<!-- sidebar -->
-@section('sidebarUser')
-@include('Layout.sidebarUser')
-@endsection
-<!-- end sidebar -->
 
 <!-- footer -->
 @section('footerUser')
