@@ -70,13 +70,15 @@ class KomplainModel extends Model
     function saveData($kode_komplain, $kode_user, $kode_kamar, $perihal, $isi, $status)
     {
         DB::table("tbl_komplain")
+        ->join('users', 'users.kode_user', '=', 'tbl_komplain.kode_user')
+        ->join('tbl_kamar', 'tbl_kamar.kode_kamar', '=', 'tbl_komplain.kode_kamar')
             ->insert([
                 "kode_komplain" => $kode_komplain,
                 "kode_user" => $kode_user,
                 "kode_kamar" => $kode_kamar,
                 "perihal" => $perihal,
                 "isi" => $isi,
-                "status" => $status
+                "status" => $status,
             ]);
     }
 
@@ -86,6 +88,8 @@ class KomplainModel extends Model
         // tampilkan data
         $query = DB::table("tbl_komplain")
             ->select("kode_komplain")
+            ->join('users', 'users.kode_user', '=', 'tbl_komplain.kode_user')
+            ->join('tbl_kamar', 'tbl_kamar.kode_kamar', '=', 'tbl_komplain.kode_kamar')
             ->where("kode_komplain", "=", $kode_komplain_baru)
             ->where(DB::raw("(kode_komplain)"), "!=", $kode_komplain_lama)
             ->get();
@@ -104,6 +108,8 @@ class KomplainModel extends Model
         $kode_komplain_lama
     ) {
         DB::table("tbl_komplain")
+            ->join('users', 'users.kode_user', '=', 'tbl_komplain.kode_user')
+            ->join('tbl_kamar', 'tbl_kamar.kode_kamar', '=', 'tbl_komplain.kode_kamar')
             ->where(DB::raw("(kode_komplain)"), "=", $kode_komplain_lama)
             ->update([
                 "kode_komplain" => $kode_komplain,

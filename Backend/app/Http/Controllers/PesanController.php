@@ -45,7 +45,7 @@ class PesanController extends Controller
 
         // Tampilkan Hasil dari "tbl_pesan"
         return response([
-            "Detail Pesan" => $data
+            "DetailPesan" => $data
         ], http_response_code());
     }
 
@@ -67,7 +67,7 @@ class PesanController extends Controller
         else {
             // Tampilkan pesan data gagal dihapus
             $status = 1;
-            $pesan = "Data Gagal di Hapus ! (Kode_Pesan tidak ditemukan !)";
+            $pesan = "Data Gagal di Hapus ! (Kode Pesan tidak ditemukan !)";
         }
         // Tampilkan hasil respon
         return response([

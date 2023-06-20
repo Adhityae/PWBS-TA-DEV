@@ -33,7 +33,7 @@ class KamarController extends Controller
 
         // Tampilkan Hasil dari "tbl_user"
         return response([
-            "Detail Kamar" => $data
+            "DetailKamar" => $data
         ], http_response_code());
     }
 

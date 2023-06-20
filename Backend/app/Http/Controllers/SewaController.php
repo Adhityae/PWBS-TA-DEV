@@ -57,7 +57,7 @@ class SewaController extends Controller
 
         // Tampilkan Hasil dari "tbl_sewa"
         return response([
-            "Detail Sewa" => $data
+            "DetailSewa" => $data
         ], http_response_code());
     }
 
@@ -91,7 +91,7 @@ class SewaController extends Controller
         else {
             // Tampilkan pesan data gagal dihapus
             $status = 1;
-            $pesan = "Data Gagal di Hapus ! (Kode_sewa tidak ditemukan !)";
+            $pesan = "Data Gagal di Hapus ! (Kode Sewa tidak ditemukan !)";
         }
         // Tampilkan hasil respon
         return response([
@@ -114,7 +114,7 @@ class SewaController extends Controller
             "status" => $req->status,
         );
         //
-        $parameter = base64_encode($data["kode_sewa"]);
+        $parameter =($data["kode_sewa"]);
         // Cek apakah data sewa (kode_sewa) sudah pernah tersimpan/belum
         $check = $this->model->detailData($parameter);
 
@@ -140,10 +140,7 @@ class SewaController extends Controller
     }
 
     // Function untuk Update Data sewa
-    function updateSewa(
-        $parameter,
-        Request $req
-    ) {
+    function updateSewa($parameter,Request $req) {
         // Ambil data hasil input
         $data = array(
             "kode_sewa" => $req->kode_sewa,

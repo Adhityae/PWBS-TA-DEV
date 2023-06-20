@@ -31,6 +31,7 @@ class KamarModel extends Model
     {
         $query = DB::table('tbl_kamar')
             ->select(
+                "kode_kamar",
                 "nama_kamar",
                 "lantai",
                 "deskripsi_kamar",
