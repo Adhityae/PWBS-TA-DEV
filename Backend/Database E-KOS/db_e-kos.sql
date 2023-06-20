@@ -47,7 +47,7 @@ CREATE TABLE `migrations` (
 
 /*Data for the table `migrations` */
 
-insert  into `migrations`(`id`,`migration`,`batch`) values
+insert  into `migrations`(`id`,`migration`,`batch`) values 
 (1,'2014_10_12_100000_create_password_resets_table',1),
 (2,'2019_08_19_000000_create_failed_jobs_table',1),
 (3,'2019_12_14_000001_create_personal_access_tokens_table',1),
@@ -87,7 +87,7 @@ CREATE TABLE `personal_access_tokens` (
 
 /*Data for the table `personal_access_tokens` */
 
-insert  into `personal_access_tokens`(`id`,`tokenable_type`,`tokenable_id`,`name`,`token`,`abilities`,`last_used_at`,`created_at`,`updated_at`) values
+insert  into `personal_access_tokens`(`id`,`tokenable_type`,`tokenable_id`,`name`,`token`,`abilities`,`last_used_at`,`created_at`,`updated_at`) values 
 (1,'App\\Models\\User',1,'secret','b054ac62309c11795855efa3e0cd8e7e3bf0adee95a0005fafb86f44d81fe1ef','[\"*\"]',NULL,'2023-05-20 12:35:43','2023-05-20 12:35:43'),
 (2,'App\\Models\\User',2,'secret','ebd1acbbe6d23561d3ee5fb5a55487e5f0efedf7fee315fd02151cb6d6ee937e','[\"*\"]',NULL,'2023-05-20 12:38:29','2023-05-20 12:38:29'),
 (3,'App\\Models\\User',3,'secret','224bc78bbda2212ed796d850f10c3f742f133b4eaecb9b0e2bd6a1f8ae642e0b','[\"*\"]',NULL,'2023-05-20 14:24:21','2023-05-20 14:24:21'),
@@ -117,7 +117,7 @@ CREATE TABLE `tbl_kamar` (
 
 /*Data for the table `tbl_kamar` */
 
-insert  into `tbl_kamar`(`id`,`kode_kamar`,`nama_kamar`,`lantai`,`deskripsi_kamar`,`status`,`harga`,`foto_kamar`) values
+insert  into `tbl_kamar`(`id`,`kode_kamar`,`nama_kamar`,`lantai`,`deskripsi_kamar`,`status`,`harga`,`foto_kamar`) values 
 (5,'KMR01','Kamar A01','Lantai 1','Fasilitas Kamar Lengkap : AC,Kasur,Lemari,Meja Belajar,Dispenser Air, Dan Kamar Mandi Dalam.','Penuh','750000','kmr01.jpg'),
 (6,'KMR02','Kamar A02','Lantai 1','Fasilitas Kamar Lengkap : AC,Kasur,Lemari,Meja Belajar,Dispenser Air, Dan Kamar Mandi Dalam.','Penuh','750000','kmr02.jpg'),
 (7,'KMR03','Kamar A03','Lantai 1','Fasilitas Kamar Lengkap : AC,Kasur,Lemari,Meja Belajar,Dispenser Air, Dan Kamar Mandi Dalam.','Penuh','750000','kmr03.jpg'),
@@ -150,7 +150,7 @@ CREATE TABLE `tbl_komplain` (
 
 /*Data for the table `tbl_komplain` */
 
-insert  into `tbl_komplain`(`id`,`kode_komplain`,`kode_user`,`kode_kamar`,`perihal`,`isi`,`status`) values
+insert  into `tbl_komplain`(`id`,`kode_komplain`,`kode_user`,`kode_kamar`,`perihal`,`isi`,`status`) values 
 (13,'KDKMP01',18711001,'KMR01','Air Tidak Mengalir','Pak Air dikamar saya tidak menyala pak','Proses'),
 (14,'KDKMP02',18711928,'KMR02','Genteng Bocor','Pak Genteng dikamar saya bocor pak','Proses');
 
@@ -175,7 +175,7 @@ CREATE TABLE `tbl_pesan` (
 
 /*Data for the table `tbl_pesan` */
 
-insert  into `tbl_pesan`(`id`,`kode_pesan`,`kode_kamar`,`kode_user`,`tanggal_masuk`,`lama_tinggal`) values
+insert  into `tbl_pesan`(`id`,`kode_pesan`,`kode_kamar`,`kode_user`,`tanggal_masuk`,`lama_tinggal`) values 
 (25,'KDPSN01','KMR01',18711001,'2023-06-20','1 Bulan'),
 (27,'KDPSN02','KMR02',91972987,'2023-06-20','1 Bulan'),
 (28,'KPSN04','KMR03',18711928,'2023-06-20','2 Bulan');
@@ -205,7 +205,7 @@ CREATE TABLE `tbl_sewa` (
 
 /*Data for the table `tbl_sewa` */
 
-insert  into `tbl_sewa`(`id`,`kode_sewa`,`kode_pesan`,`kode_user`,`kode_kamar`,`tanggal_keluar`,`pembayaran`,`status`) values
+insert  into `tbl_sewa`(`id`,`kode_sewa`,`kode_pesan`,`kode_user`,`kode_kamar`,`tanggal_keluar`,`pembayaran`,`status`) values 
 (19,'KDSW01','KDPSN01',18711001,'KMR01','2023-06-20','750000','Sudah Bayar'),
 (20,'KDSW02','KDPSN02',91972987,'KMR02','2023-07-20','750000','Sudah Bayar'),
 (21,'KDSW04','KPSN04',18711928,'KMR03','2023-08-20','750000','DiCicil');
@@ -237,7 +237,7 @@ CREATE TABLE `users` (
 
 /*Data for the table `users` */
 
-insert  into `users`(`id`,`kode_user`,`nama`,`email`,`password`,`jk`,`alamat`,`no_telepon`,`status_user`,`foto_user`,`role`,`email_verified_at`,`remember_token`,`created_at`,`updated_at`) values
+insert  into `users`(`id`,`kode_user`,`nama`,`email`,`password`,`jk`,`alamat`,`no_telepon`,`status_user`,`foto_user`,`role`,`email_verified_at`,`remember_token`,`created_at`,`updated_at`) values 
 (22,10101010,'Admin E-KOS','admin@gmail.com','admin123','Pria','Bandar Lampung','089521937647','Pegawai','admin.jpg','Admin',NULL,NULL,NULL,NULL),
 (30,18711001,'Jeki Saragih','jeki@gmail.com','jeki010201','Pria','Jln.Mangga No.123 Bandar Lampung','0897266177278','Karyawan','jeki.png','Customer',NULL,NULL,NULL,NULL),
 (32,18711928,'Dani Aditya','dani@gmail.com','dani020102','Pria','Bandar Lampung','0882772829929','Pegawai','dani.png','Customer',NULL,NULL,NULL,NULL),
