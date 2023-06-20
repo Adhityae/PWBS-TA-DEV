@@ -140,7 +140,7 @@ class UserController extends Controller
                 "status_user" => $hasil->status_user,
                 "foto_user" => $hasil->foto_user,
                 "role" => $hasil->role,
-                "kode_user_lama" => $parameter
+                "kode_user_lama" => $parameter,
             ];
         }
 
@@ -149,11 +149,10 @@ class UserController extends Controller
         return view("Admin.vw_user.edit_user", $data);
     }
 
-    function editData($parameter)
+    function editUser($parameter,Request $req)
     {
-
         // untuk post dari data server
-        $url = env("API_URL") . "updateUser/" . $parameter;
+        $url = env("API_URL")."updateUser/".$parameter;
 
         // ambil service "post" dari server
         $request = $this->client->put($url,[
@@ -168,7 +167,6 @@ class UserController extends Controller
                 "status_user" => $req->status_user,
                 "foto_user" => $req->foto_user,
                 "role" => $req->role,
-                "kode_user_baru" => $parameter
             ]
             ]);
 
